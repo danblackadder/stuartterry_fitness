@@ -1,0 +1,28 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+.slick-dots li button::before,
+.slick-dots li.slick-active button:before {
+	color: #fff;
+}
+.slick-next:before,
+.slick-prev:before {
+	display: none;
+}
+
+.public-DraftEditor-content {
+	min-height: 400px;
+	max-height: 400px;
+}
+
+.public-DraftStyleDefault-block span {
+	color: #333;
+}
+
+.social-icon {
+	margin-top: 0 !important;
+	height: 32px;
+}

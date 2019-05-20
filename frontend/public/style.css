@@ -1,0 +1,261 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #272727;
+  margin: 0;
+}
+
+.app {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.nojavascript {
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 20px 0;
+  font-size: 24px;
+  background-color: #383838;
+  text-align: center;
+  color: #fff;
+}
+
+/* Main Center */
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15%
+}
+
+.header {
+  cursor: default;
+  animation: opacity 1s linear;
+  width: 25%;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Social Media */
+.social-media {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5vh;
+  margin-left: 5vw;
+}
+
+.social-icon {
+  height: 64px;
+  width: auto;
+  fill: #fff;
+  margin-right: 5vw;
+  margin-top: 5vh;
+  animation: opacity 1s linear;
+}
+
+.social-icon:hover {
+  color: #6b8e23;
+  fill: #6b8e23;
+  cursor: pointer;
+  transition: color 0.3s linear, fill 0.3s linear;
+}
+
+/* Accreditation */
+.accreditation {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: 2vh;
+}
+
+.premier-logo {
+  height: 52;
+  width: auto;
+  animation: opacity 1s linear;
+}
+
+/* Contact Information */
+.contact {
+  font-size: 24px;
+  font-family: Ebrima;
+  font-weight: 100;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 5vh;
+  margin-right: 5vw;
+}
+
+.contact-item {
+  color: #fff;
+  fill: #fff;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  animation: opacity 1s linear;
+}
+
+.contact-item:hover {
+  color: #6b8e23;
+  fill: #6b8e23;
+  cursor: pointer;
+  transition: color 0.3s linear, fill 0.3s linear;
+}
+
+.address {
+  font-style: normal;
+  margin-top: 20px;
+}
+
+.contact-icon {
+  height: 32px;
+  width: auto;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+/* Animations */
+
+@keyframes opacity {
+  0% {
+    opacity: 0.01;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Large Desktop Screen */
+@media only screen and (min-width: 2500px) {
+  .premier-logo {
+    height: 72px;
+  }
+  .social-icon {
+    height: 80px;
+  }
+  .contact {
+    font-size: 32px;
+  }
+  .contact-icon {
+    height: 36px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .social-icon {
+    height: 48px;
+  }
+  .contact {
+    font-size: 24px;
+  }
+  .contact-icon {
+    height: 28px;
+  }
+  .address {
+    display: none;
+  }
+}
+
+@media only screen and (max-height: 400px) and (orientation: landscape) {
+  .main {
+    margin-top: 20%;
+  }
+}
+
+@media only screen and (max-width: 700px) and (orientation: landscape) {
+  .premier-logo {
+    height: 32px;
+  }
+  .social-icon {
+    height: 38px;
+  }
+  .contact {
+    font-size: 20px;
+  }
+  .contact-icon {
+    height: 28px;
+  }
+}
+
+@media only screen and (max-width: 1000px) and (orientation: landscape) {
+  .premier-logo {
+    height: 32px;
+  }
+  .social-icon {
+    height: 38px;
+  }
+  .contact {
+    font-size: 20px;
+  }
+  .contact-icon {
+    height: 28px;
+  }
+}
+
+@media only screen and (orientation: portrait) {
+  .social-media {
+    flex-direction: column;
+  }
+  .header {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 700px) and (orientation: portrait) {
+  .main {
+    margin-top: 30%;
+  }
+  .premier-logo {
+    height: 42px;
+  }
+  .social-icon {
+    height: 48px;
+  }
+  .contact {
+    font-size: 24px;
+  }
+  .contact-icon {
+    height: 28px;
+  }
+}
+
+@media only screen and (max-width: 700px) and (orientation: portrait) {
+  .main {
+    margin-top: 50%;
+  }
+  .accreditation {
+    left: 55%;
+    -webkit-transform: translateX(-55%);
+    transform: translateX(-55%);
+  }
+  .premier-logo {
+    height: 32px;
+  }
+  .social-icon {
+    height: 42px;
+  }
+  .contact-icon {
+    height: 36px;
+  }
+}
