@@ -1,0 +1,77 @@
+// container center
+
+.margin-center {
+	margin: 0 auto;
+}
+
+// margin and padding
+
+@mixin space-populate {
+	$boxes: (
+		'padding': padding,
+		'margin': margin,
+	);
+	$sizes: (
+		'xsmall': $gap-xsmall,
+		'small': $gap-small,
+		'large': $gap-large,
+		'xlarge': $gap-xlarge,
+	);
+
+	$axis: 'vertical', 'horizontal';
+	$directions: 'top', 'right', 'bottom', 'left';
+
+	@each $box, $space in $boxes {
+		.#{$box} {
+			#{$space}: $gap;
+		}
+
+		@each $size, $var in $sizes {
+			.#{$box}-#{$size} {
+				#{$space}: #{$var};
+			}
+		}
+
+		.#{$box}-none {
+			#{$space}: 0 !important;
+		}
+
+		@each $axi in $axis {
+			.#{$box}-#{$axi} {
+				@if ($axi == 'vertical') {
+					#{$space}-top: $gap;
+					#{$space}-bottom: $gap;
+				} @else {
+					#{$space}-right: $gap;
+					#{$space}-left: $gap;
+				}
+			}
+
+			@each $size, $var in $sizes {
+				.#{$box}-#{$axi}-#{$size} {
+					@if ($axi == 'vertical') {
+						#{$space}-top: #{$var};
+						#{$space}-bottom: #{$var};
+					} @else {
+						#{$space}-right: #{$var};
+						#{$space}-left: #{$var};
+					}
+				}
+			}
+		}
+
+		@each $direction in $directions {
+			.#{$box}-#{$direction} {
+				#{$space}-#{$direction}: $gap;
+			}
+
+			@each $size, $var in $sizes {
+				.#{$box}-#{$direction}-#{$size} {
+					#{$space}-#{$direction}: #{$var};
+				}
+			}
+		}
+	}
+}
+
+@include space-populate();
