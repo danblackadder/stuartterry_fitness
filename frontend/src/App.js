@@ -11,7 +11,7 @@ import Main from './components/frontend/Main';
 import Admin from './components/admin/Admin';
 import ReactGA from 'react-ga';
 
-import './app.css';
+import './scss/app.scss';
 
 const dotenv = require('dotenv');
 
