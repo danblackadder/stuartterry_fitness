@@ -6,16 +6,18 @@ import ReactDOM from 'react-dom';
 
 import ReactGA from 'react-ga';
 
-import Navbar from './Navbar';
-import Footer from './Footer';
-import Home from './Home';
-import About from './About';
-import Blog from './Blog';
-import BlogPost from './BlogPost';
-import Contact from './Contact';
-import TermsAndConditions from './TermsAndConditions';
-import PrivacyPolicy from './PrivacyPolicy';
-import Null from './Null';
+import Navbar from './components/navigation/Navigation';
+import Footer from './components/navigation/Footer';
+import Home from './components/home/Home';
+import About from './components/about/About';
+import Blog from './components/blog/Blog';
+import BlogPost from './components/blog/BlogPost';
+import Contact from './components/contact/Contact';
+import TermsAndConditions from './components/misc/TermsAndConditions';
+import PrivacyPolicy from './components/misc/PrivacyPolicy';
+import Null from './components/misc/Null';
+
+import HandleBack from './helpers/HandleBack';
 
 import './scss/app.scss';
 
@@ -27,8 +29,6 @@ ReactGA.initialize(process.env.GA);
 
 class App extends Component {
   render() {
-    const baseUrl = process.env.PUBLIC_URL;
-
     return (
       <Router>
         <ScrollToTop>
