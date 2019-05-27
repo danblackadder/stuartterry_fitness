@@ -1,4 +1,4 @@
-export const slickSettings = {
+export const SlickSettings = {
     dots: true,
     autoplay: true,
     pauseOnDotsHover: true,

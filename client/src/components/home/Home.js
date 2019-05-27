@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import ReactGA from 'react-ga';
@@ -7,17 +6,29 @@ import ReactGA from 'react-ga';
 import { getArticles } from '../../helpers/api/article';
 import { SlickSettings } from '../../helpers/SlickSettings';
 
-import hero from './img/Hero.png';
+import hero from '../../assets/Hero.png';
 import {
     FaStar,
-    FaAngleUp,
     FaFacebookSquare,
     FaInstagram,
 } from 'react-icons/fa';
 
+import { ScrollToTop } from '../../helpers/ScrollToTop';
+
 class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            articles: []
+        };
+    }
+
     componentDidMount() {
-        getArticles();
+        getArticles().then(res => {
+            this.setState({
+                articles: res
+            })
+        });
         ReactGA.pageview('/');
     }
 
@@ -29,62 +40,56 @@ class Home extends Component {
                 <h2 className="text-center">LATEST BLOG</h2>
 
                 <div className="padding-vertical-large flex-row is-wrapped flex-center">
-                    {Object.keys(this.props.articles).map(
-                        i =>
-                            i < 3 ? (
-                                <Link
-                                    to={
-                                        '/blog/' + this.props.articles[i].title
-                                    }>
+                    {Object.keys(this.state.articles).map(i =>
+                        i < 3 ? (
+                            <Link to={'/blog/' + this.state.articles[i].title}>
+                                <div
+                                    className="margin relative"
+                                    style={{
+                                        height: 280 + 'px',
+                                        width: 280 + 'px',
+                                    }}>
                                     <div
-                                        className="margin relative"
+                                        className="overflow-hidden background-secondary"
                                         style={{
                                             height: 280 + 'px',
                                             width: 280 + 'px',
                                         }}>
-                                        <div
-                                            className="overflow-hidden background-secondary"
+                                        <img
+                                            src={this.state.articles[i].img}
+                                            className="relative"
                                             style={{
-                                                height: 280 + 'px',
-                                                width: 280 + 'px',
-                                            }}>
-                                            <img
-                                                src={this.props.articles[i].img}
-                                                className="relative"
-                                                style={{
-                                                    height: 130 + 'px',
-                                                    top: 50 + '%',
-                                                    left: 50 + '%',
-                                                    transform:
-                                                        'translateY(-50%) translateX(-50%)',
-                                                }}
-                                                alt={
-                                                    this.props.articles[i].title
-                                                }
-                                            />
+                                                height: 130 + 'px',
+                                                top: 50 + '%',
+                                                left: 50 + '%',
+                                                transform:
+                                                    'translateY(-50%) translateX(-50%)',
+                                            }}
+                                            alt={this.state.articles[i].title}
+                                        />
+                                    </div>
+                                    <div
+                                        className="background-primary absolute flex-column flex-center"
+                                        style={{
+                                            height: 80 + 'px',
+                                            width: 80 + 'px',
+                                            bottom: -10 + 'px',
+                                            left: -10 + 'px',
+                                        }}>
+                                        <div>
+                                            {this.state.articles[
+                                                i
+                                            ].createdDate.slice(8, 10)}
                                         </div>
-                                        <div
-                                            className="background-primary absolute flex-column flex-center"
-                                            style={{
-                                                height: 80 + 'px',
-                                                width: 80 + 'px',
-                                                bottom: -10 + 'px',
-                                                left: -10 + 'px',
-                                            }}>
-                                            <div>
-                                                {this.props.articles[
-                                                    i
-                                                ].createdDate.slice(8, 10)}
-                                            </div>
-                                            <div>
-                                                {this.props.articles[
-                                                    i
-                                                ].createdDate.slice(5, 7)}
-                                            </div>
+                                        <div>
+                                            {this.state.articles[
+                                                i
+                                            ].createdDate.slice(5, 7)}
                                         </div>
                                     </div>
-                                </Link>
-                            ) : null,
+                                </div>
+                            </Link>
+                        ) : null,
                     )}
                 </div>
             </div>
@@ -92,7 +97,7 @@ class Home extends Component {
 
         return (
             <div className="full-width">
-            	<ScrollToTop />
+                <ScrollToTop />
                 <img
                     className="full-width"
                     src={hero}
@@ -115,7 +120,8 @@ class Home extends Component {
                             PROBABLY DOING SOMETHING WRONG AND ARE MORE LIKELY
                             TO FAIL. I LIKE TO BREAK DOWN THE BASICS OF WHAT YOU
                             NEED TO DO IN ORDER TO GET YOUR BODY FIRING THE WAY
-                            IT NEEDS TO.<br />
+                            IT NEEDS TO.
+                            <br />
                             <br />I HAVE BEEN A GYM ADDICT FOR THE LAST 10 YEARS
                             AND HAVE BEEN PHYSICALLY FIT FOR THE MAJORITY OF
                             THAT TIME. I AM CONSTANTLY LEARNING AND RESEARCHING
@@ -124,7 +130,9 @@ class Home extends Component {
                             THAN SEEING MY CLIENTS ACHIEVE THEIR BODY AND MENTAL
                             GOALS.
                         </div>
-                        <Link to="/about" className="align-center margin-top-large">
+                        <Link
+                            to="/about"
+                            className="align-center margin-top-large">
                             <button className="padding-vertical padding-horizontal-large border-white-solid background-transparent background-primary-bottom">
                                 <h3 className="white relative">READ MORE</h3>
                             </button>
@@ -134,7 +142,7 @@ class Home extends Component {
                 <div className="background-secondary">
                     <div className="container padding-vertical-large padding-horizontal-small">
                         <div className="text-center margin-large">
-                            <Slider {...slickSettings}>
+                            <Slider {...SlickSettings}>
                                 <a
                                     href="https://www.yell.com/biz/stuart-terry-fitness-uxbridge-9256755/#reviews"
                                     target="_blank"
@@ -293,21 +301,27 @@ class Home extends Component {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="margin-horizontal">
-                                        <FaInstagram color="#fff" size="4em" className="fill-primary-hover" />
+                                        <FaInstagram
+                                            color="#fff"
+                                            size="4em"
+                                            className="fill-primary-hover"
+                                        />
                                     </a>
                                 </div>
                             </div>
 
                             <Link to="/contact" className="align-center">
                                 <button className="margin-top padding-vertical padding-horizontal-large border-white-solid background-transparent white cursor-pointer background-primary-bottom">
-                                    <h3 className="white relative">CONTACT FOR FREE CONSULTATION</h3>
+                                    <h3 className="white relative">
+                                        CONTACT FOR FREE CONSULTATION
+                                    </h3>
                                 </button>
                             </Link>
                         </div>
                     </div>
                 </div>
 
-                {this.props.articles.length > 0 ? blogpost : null}
+                {this.state.articles.length > 0 ? blogpost : null}
             </div>
         );
     }
