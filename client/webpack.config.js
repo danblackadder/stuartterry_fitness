@@ -52,6 +52,13 @@ module.exports = {
         fs: 'empty',
     },
     devServer: {
-        contentBase: path.join(__dirname, 'public')
-    }
+        contentBase: path.join(__dirname, 'public'),
+        clientLogLevel: 'none',
+        compress: true,
+        overlay: false,
+        watchContentBase: true,
+        hot: true,
+        quiet: false,
+    },
+    performance: false,
 };

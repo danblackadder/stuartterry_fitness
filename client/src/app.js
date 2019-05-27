@@ -7,8 +7,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import ReactGA from 'react-ga';
 
-// import Navbar from './components/navigation/Navigation';
-// import Footer from './components/navigation/Footer';
+import Navigation from './components/navigation/Navigation';
+import Footer from './components/navigation/Footer';
 import Home from './components/home/Home';
 // import About from './components/about/About';
 // import Blog from './components/blog/Blog';
@@ -34,7 +34,7 @@ class App extends Component {
       <BrowserRouter>
         <HandleBack>
           <div className="full-container flex-column full-screen-height-min">
-            {/*<Navbar />*/}
+            <Navigation />
             <Switch>
               {/*<Route path="/about" component={About} />
               <Route path="/blog" component={Blog} />
@@ -48,7 +48,7 @@ class App extends Component {
               <Route exact path="/" component={Home} />
               <Route component={Null} />
             </Switch>
-            {/*<Footer />*/}
+            <Footer />
           </div>
         </HandleBack>
       </BrowserRouter>
