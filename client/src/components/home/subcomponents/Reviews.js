@@ -33,6 +33,7 @@ export const Reviews = () => {
 				size="2em"
 				color="#6e8e2f"
 				className="margin-right-small"
+				key={i}
 			/>,
 		);
 	}

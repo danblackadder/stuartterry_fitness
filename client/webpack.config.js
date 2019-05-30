@@ -53,11 +53,12 @@ module.exports = {
     },
     devServer: {
         contentBase: path.join(__dirname, 'public'),
+        publicPath: '/',
+        historyApiFallback: true,
         clientLogLevel: 'none',
         compress: true,
         overlay: false,
         watchContentBase: true,
-        hot: true,
         quiet: false,
     },
     performance: false,

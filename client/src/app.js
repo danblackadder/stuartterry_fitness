@@ -10,10 +10,10 @@ import ReactGA from 'react-ga';
 import Navigation from './components/navigation/Navigation';
 import Footer from './components/navigation/Footer';
 import Home from './components/home/Home';
-// import About from './components/about/About';
+import About from './components/about/About';
 // import Blog from './components/blog/Blog';
 // import BlogPost from './components/blog/BlogPost';
-// import Contact from './components/contact/Contact';
+import Contact from './components/contact/Contact';
 // import TermsAndConditions from './components/misc/TermsAndConditions';
 // import PrivacyPolicy from './components/misc/PrivacyPolicy';
 import Null from './components/misc/Null';
@@ -36,11 +36,11 @@ class App extends Component {
           <div className="full-container flex-column full-screen-height-min">
             <Navigation />
             <Switch>
-              {/*<Route path="/about" component={About} />
-              <Route path="/blog" component={Blog} />
-              <Route path="/blog/:title" component={BlogPost} />
+              <Route path="/about" component={About} />
+              {/*<Route path="/blog" component={Blog} />
+              <Route path="/blog/:title" component={BlogPost} />*/}
               <Route path="/contact" component={Contact} />
-              <Route
+              {/*<Route
                 path="/terms-and-conditions"
                 component={TermsAndConditions}
               />
